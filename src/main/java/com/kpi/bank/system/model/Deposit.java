@@ -12,6 +12,10 @@ public class Deposit {
     private Integer periodDays;
     private Float price;
 
+    public Deposit() {
+
+    }
+
     public Deposit(
             Integer id,
             Integer cardId,
