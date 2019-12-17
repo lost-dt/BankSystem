@@ -3,7 +3,6 @@ package com.kpi.bank.system.model;
 import java.util.Date;
 import java.util.Objects;
 
-import static sun.misc.PerformanceLogger.getStartTime;
 
 public class PhoneReplenishment {
 
@@ -111,7 +110,6 @@ public class PhoneReplenishment {
                 "id=" + id +
                 ", transactionId=" + '\'' + transactionId + '\'' +
                 ", phoneNumber=" + '\'' + phoneNumber + '\'' +
-                ", startTime=" + '\'' + getStartTime() + '\'' +
                 ')';
     }
 
