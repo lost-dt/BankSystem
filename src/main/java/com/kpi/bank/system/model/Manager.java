@@ -7,6 +7,10 @@ public class Manager {
     private Integer id;
     private Integer userId;
 
+    public Manager() {
+
+    }
+
     public Manager(
             Integer id,
             Integer userId) {
