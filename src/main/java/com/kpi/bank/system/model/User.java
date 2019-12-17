@@ -11,6 +11,10 @@ public class User {
     private String lastName;
     private String secretWord;
 
+    public User() {
+
+    }
+
     public User(
             Integer id,
             String email,
