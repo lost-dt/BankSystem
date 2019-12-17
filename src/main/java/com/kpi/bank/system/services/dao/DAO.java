@@ -1,4 +1,4 @@
-package com.kpi.bank.system.services.dao.entity;
+package com.kpi.bank.system.services.dao;
 
 import com.kpi.bank.system.model.Card;
 

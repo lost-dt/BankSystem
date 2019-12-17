@@ -3,8 +3,10 @@ package com.kpi.bank.system;
 import com.kpi.bank.system.model.Card;
 
 import com.kpi.bank.system.model.CardReplenishment;
+import com.kpi.bank.system.model.Client;
 import com.kpi.bank.system.services.dao.service.CardReplenishmentService;
 import com.kpi.bank.system.services.dao.service.CardService;
+import com.kpi.bank.system.services.dao.service.ClientService;
 import com.kpi.bank.system.services.utils.date.DateParser;
 
 import java.sql.SQLException;
@@ -37,22 +39,32 @@ public class BankSystemApp {
 //            e.printStackTrace();
 //        }
 
-        CardReplenishment testCardReplenishment = new CardReplenishment.Builder()
-                .setCardNumber("368291")
-                .setId(1)
-                .setTransactionId(1)
+        Client client = new Client.Builder().
+                setId(1)
+                .setUserId(1)
+                .lifePeriod(12)
                 .build();
 
-        CardReplenishmentService cardReplenishmentService = new CardReplenishmentService();
+        ClientService clientService = new ClientService();
 
         try {
-            List<CardReplenishment> test = cardReplenishmentService.loadAll();
-            for(CardReplenishment item : test) {
-                System.err.println(item);
+            clientService.insert(client);
+            List<Client> clients =clientService.loadAll();
+            for(Client item :  clients) {
+                System.out.println(item);
             }
+            Client byId = clientService.loadById(1);
+            System.out.println(byId);
+
+            byId.setFilePeriod(30);
+            clientService.update(byId);
+            System.out.println(byId);
+
+            clientService.remove(byId);
 
         } catch (SQLException e) {
             e.printStackTrace();
         }
+
     }
 }

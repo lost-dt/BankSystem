@@ -8,6 +8,10 @@ public class Client {
     private Integer userId;
     private Integer lifePeriod;
 
+    public Client() {
+
+    }
+
     public Client(
             Integer id,
             Integer userId,
