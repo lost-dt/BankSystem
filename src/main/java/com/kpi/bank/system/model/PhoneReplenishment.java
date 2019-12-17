@@ -10,6 +10,10 @@ public class PhoneReplenishment {
     private Integer transactionId;
     private String phoneNumber;
 
+    public PhoneReplenishment() {
+
+    }
+
     public PhoneReplenishment(
             Integer id,
             Integer transactionId,
