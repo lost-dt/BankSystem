@@ -4,7 +4,6 @@ import com.kpi.bank.system.controller.Controller;
 import com.kpi.bank.system.model.Client;
 import com.kpi.bank.system.services.dao.DAO;
 import com.kpi.bank.system.services.dao.connector.MySqlPoolConnector;
-import com.kpi.bank.system.services.utils.date.DateFormator;
 
 import java.sql.*;
 import java.util.ArrayList;
@@ -36,6 +35,7 @@ public class ClientService implements DAO<Client> {
 
     @Override
     public void insert(Client client) throws SQLException {
+
         String sql = String.format(
                 "INSERT INTO %s.%s (ID, USER_ID, LIFE_PERIOD) VALUES(?, ?, ?)",
                 DATABASE_NAME,
@@ -87,6 +87,7 @@ public class ClientService implements DAO<Client> {
                 DATABASE_NAME,
                 TABLE_NAME
         );
+
         Client client = null;
         try (PreparedStatement preparedStatement = connection.prepareStatement(sql)) {
             preparedStatement.setLong(1, id);
@@ -130,6 +131,7 @@ public class ClientService implements DAO<Client> {
                 DATABASE_NAME,
                 TABLE_NAME
         );
+
         try (PreparedStatement preparedStatement = connection.prepareStatement(sql)) {
 
             preparedStatement.setInt(1, client.getId());
