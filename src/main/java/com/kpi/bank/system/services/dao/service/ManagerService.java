@@ -86,18 +86,18 @@ public class ManagerService implements DAO<Manager> {
                 TABLE_NAME
         );
 
-        Manager client = null;
+        Manager manager = null;
         try (PreparedStatement preparedStatement = connection.prepareStatement(sql)) {
             preparedStatement.setLong(1, id);
 
             ResultSet resultSet = preparedStatement.executeQuery();
             resultSet.next();
 
-            client = createManagerFromResultSet(resultSet);
+            manager = createManagerFromResultSet(resultSet);
         } catch (SQLException e) {
             Controller.printErrorMessage(e.toString());
         }
-        return client;
+        return manager;
     }
 
     @Override
