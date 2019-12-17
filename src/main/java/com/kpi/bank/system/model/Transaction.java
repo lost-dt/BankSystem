@@ -11,6 +11,10 @@ public class Transaction {
     private Date startTime;
     private Date endTime;
 
+    public Transaction() {
+
+    }
+
     public Transaction(
             Integer id,
             Integer cardId,
