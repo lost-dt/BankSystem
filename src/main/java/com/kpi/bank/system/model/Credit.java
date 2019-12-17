@@ -13,6 +13,10 @@ public class Credit {
     private Integer periodDays;
     private Float price;
 
+    public Credit() {
+
+    }
+
     public Credit(
             Integer id,
             Integer cardId,
