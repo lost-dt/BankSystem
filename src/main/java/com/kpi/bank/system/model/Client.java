@@ -2,7 +2,7 @@ package com.kpi.bank.system.model;
 
 import java.util.Objects;
 
-public class Client extends User {
+public class Client {
 
     private Integer id;
     private Integer userId;
@@ -11,31 +11,22 @@ public class Client extends User {
     public Client(
             Integer id,
             Integer userId,
-            String email,
-            String password,
-            String firstName,
-            String lastName,
-            String secretWord,
             Integer lifePeriod) {
-        super(userId, email, password, firstName, lastName, secretWord);
         this.id = id;
         this.userId = userId;
         this.lifePeriod = lifePeriod;
     }
 
     protected Client(Builder builder) {
-        super(builder);
         id = builder.id;
         userId = builder.userId;
         lifePeriod = builder.lifePeriod;
     }
 
-    @Override
     public Integer getId() {
         return id;
     }
 
-    @Override
     public void setId(Integer id) {
         this.id = id;
     }
@@ -56,7 +47,7 @@ public class Client extends User {
         this.lifePeriod = filePeriod;
     }
 
-    public static class Builder extends User.Builder<Builder> {
+    public static class Builder {
 
         private Integer id;
         private Integer userId;
@@ -100,11 +91,6 @@ public class Client extends User {
 
         if (!Objects.equals(getId(), client.getId())) return false;
         if (!Objects.equals(getUserId(), client.getUserId())) return false;
-        if (!Objects.equals(getEmail(), client.getEmail())) return false;
-        if (!Objects.equals(getPassword(), client.getPassword())) return false;
-        if (!Objects.equals(getFirstName(), client.getFirstName())) return false;
-        if (!Objects.equals(getLastName(), client.getLastName())) return false;
-        if (!Objects.equals(getSecretWord(), client.getSecretWord())) return false;
         return Objects.equals(getFilePeriod(), client.getFilePeriod());
     }
 
@@ -112,11 +98,6 @@ public class Client extends User {
     public int hashCode() {
         int result = id != null ? id.hashCode() : 0;
         result = 31 * result + (userId != null ? userId.hashCode() : 0);
-        result = 31 * result + (getEmail() != null ? getEmail().hashCode() : 0);
-        result = 31 * result + (getPassword() != null ? getPassword().hashCode() : 0);
-        result = 31 * result + (getFirstName() != null ? getFirstName().hashCode() : 0);
-        result = 31 * result + (getLastName() != null ? getLastName().hashCode() : 0);
-        result = 31 * result + (getSecretWord() != null ? getSecretWord().hashCode() : 0);
         result = 31 * result + (lifePeriod != null ? lifePeriod.hashCode() : 0);
         return result;
     }
@@ -126,11 +107,6 @@ public class Client extends User {
         return "Client(" +
                 "id=" + id +
                 ", userId=" + '\'' + userId + '\'' +
-                ", email=" + '\'' + getEmail() + '\'' +
-                ", password=" + '\'' + getPassword() + '\'' +
-                ", firstName=" + '\'' + getFirstName() + '\'' +
-                ", lastName=" + '\'' + getLastName() + '\'' +
-                ", secretWord=" + '\'' + getSecretWord() + '\'' +
                 ", lifePeriod=" + '\'' + lifePeriod + '\'' +
                 ')';
     }

@@ -3,7 +3,9 @@ package com.kpi.bank.system.model;
 import java.util.Date;
 import java.util.Objects;
 
-public class PhoneReplenishment extends Transaction {
+import static sun.misc.PerformanceLogger.getStartTime;
+
+public class PhoneReplenishment {
 
     private Integer id;
     private Integer transactionId;
@@ -12,31 +14,22 @@ public class PhoneReplenishment extends Transaction {
     public PhoneReplenishment(
             Integer id,
             Integer transactionId,
-            Integer cardId,
-            Float price,
-            Date startTime,
-            Date endTime,
             String phoneNumber) {
-        super(transactionId, cardId, price, startTime, endTime);
         this.id = id;
         this.transactionId = transactionId;
         this.phoneNumber = phoneNumber;
     }
 
     protected PhoneReplenishment(Builder builder) {
-        super(builder);
         id = builder.id;
         transactionId = builder.transactionId;
         phoneNumber = builder.phoneNumber;
     }
 
-
-    @Override
     public Integer getId() {
         return id;
     }
 
-    @Override
     public void setId(Integer id) {
         this.id = id;
     }
@@ -57,7 +50,7 @@ public class PhoneReplenishment extends Transaction {
         this.phoneNumber = phoneNumber;
     }
 
-    public static class Builder extends Transaction.Builder<Builder> {
+    public static class Builder {
 
         private Integer id;
         private Integer transactionId;
@@ -86,7 +79,6 @@ public class PhoneReplenishment extends Transaction {
             return this;
         }
 
-
         public PhoneReplenishment build() {
             return new PhoneReplenishment(this);
         }
@@ -102,11 +94,7 @@ public class PhoneReplenishment extends Transaction {
 
         if (!Objects.equals(id, phoneReplenishment.id)) return false;
         if (!Objects.equals(transactionId, phoneReplenishment.transactionId)) return false;
-        if (!Objects.equals(phoneNumber, phoneReplenishment.phoneNumber)) return false;
-        if (!Objects.equals(getCardId(), phoneReplenishment.getCardId())) return false;
-        if (!Objects.equals(getPrice(), phoneReplenishment.getPrice())) return false;
-        if (!Objects.equals(getStartTime(), phoneReplenishment.getStartTime())) return false;
-        return Objects.equals(getEndTime(), phoneReplenishment.getEndTime());
+        return Objects.equals(phoneNumber, phoneReplenishment.phoneNumber);
     }
 
     @Override
@@ -114,10 +102,6 @@ public class PhoneReplenishment extends Transaction {
         int result = id != null ? id.hashCode() : 0;
         result = 31 * result + (transactionId != null ? transactionId.hashCode() : 0);
         result = 31 * result + (phoneNumber != null ? phoneNumber.hashCode() : 0);
-        result = 31 * result + (getCardId() != null ? getCardId().hashCode() : 0);
-        result = 31 * result + (getPrice() != null ? getPrice().hashCode() : 0);
-        result = 31 * result + (getStartTime() != null ? getStartTime().hashCode() : 0);
-        result = 31 * result + (getEndTime() != null ? getEndTime().hashCode() : 0);
         return result;
     }
 
@@ -127,10 +111,7 @@ public class PhoneReplenishment extends Transaction {
                 "id=" + id +
                 ", transactionId=" + '\'' + transactionId + '\'' +
                 ", phoneNumber=" + '\'' + phoneNumber + '\'' +
-                ", cardId=" + '\'' + getCardId() + '\'' +
-                ", price=" + '\'' + getPrice() + '\'' +
                 ", startTime=" + '\'' + getStartTime() + '\'' +
-                ", endTime=" + '\'' + getEndTime() + '\'' +
                 ')';
     }
 

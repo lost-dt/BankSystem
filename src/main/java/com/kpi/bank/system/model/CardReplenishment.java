@@ -3,40 +3,35 @@ package com.kpi.bank.system.model;
 import java.util.Date;
 import java.util.Objects;
 
-public class CardReplenishment extends Transaction {
+public class CardReplenishment {
 
     private Integer id;
     private Integer transactionId;
     private String cardNumber;
 
+    public CardReplenishment() {
+
+    }
+
     public CardReplenishment(
             Integer id,
             Integer transactionId,
-            Integer cardId,
-            Float price,
-            Date startTime,
-            Date endTime,
             String cardNumber) {
-        super(transactionId, cardId, price, startTime, endTime);
         this.id = id;
         this.transactionId = transactionId;
         this.cardNumber = cardNumber;
     }
 
     protected CardReplenishment(Builder builder) {
-        super(builder);
         id = builder.id;
         transactionId = builder.transactionId;
         cardNumber = builder.cardNumber;
     }
 
-
-    @Override
     public Integer getId() {
         return id;
     }
 
-    @Override
     public void setId(Integer id) {
         this.id = id;
     }
@@ -57,7 +52,7 @@ public class CardReplenishment extends Transaction {
         this.cardNumber = cardNumber;
     }
 
-    public static class Builder extends Transaction.Builder<Builder> {
+    public static class Builder {
 
         private Integer id;
         private Integer transactionId;
@@ -102,11 +97,7 @@ public class CardReplenishment extends Transaction {
 
         if (!Objects.equals(id, cardReplenishment.id)) return false;
         if (!Objects.equals(transactionId, cardReplenishment.transactionId)) return false;
-        if (!Objects.equals(cardNumber, cardReplenishment.cardNumber)) return false;
-        if (!Objects.equals(getCardId(), cardReplenishment.getCardId())) return false;
-        if (!Objects.equals(getPrice(), cardReplenishment.getPrice())) return false;
-        if (!Objects.equals(getStartTime(), cardReplenishment.getStartTime())) return false;
-        return Objects.equals(getEndTime(), cardReplenishment.getEndTime());
+        return Objects.equals(cardNumber, cardReplenishment.cardNumber);
     }
 
     @Override
@@ -114,10 +105,6 @@ public class CardReplenishment extends Transaction {
         int result = id != null ? id.hashCode() : 0;
         result = 31 * result + (transactionId != null ? transactionId.hashCode() : 0);
         result = 31 * result + (cardNumber != null ? cardNumber.hashCode() : 0);
-        result = 31 * result + (getCardId() != null ? getCardId().hashCode() : 0);
-        result = 31 * result + (getPrice() != null ? getPrice().hashCode() : 0);
-        result = 31 * result + (getStartTime() != null ? getStartTime().hashCode() : 0);
-        result = 31 * result + (getEndTime() != null ? getEndTime().hashCode() : 0);
         return result;
     }
 
@@ -127,10 +114,6 @@ public class CardReplenishment extends Transaction {
                 "id=" + id +
                 ", transactionId=" + '\'' + transactionId + '\'' +
                 ", cardNumber=" + '\'' + cardNumber + '\'' +
-                ", cardId=" + '\'' + getCardId() + '\'' +
-                ", price=" + '\'' + getPrice() + '\'' +
-                ", startTime=" + '\'' + getStartTime() + '\'' +
-                ", endTime=" + '\'' + getEndTime() + '\'' +
                 ')';
     }
 

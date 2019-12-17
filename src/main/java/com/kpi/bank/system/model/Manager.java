@@ -2,36 +2,27 @@ package com.kpi.bank.system.model;
 
 import java.util.Objects;
 
-public class Manager extends User {
+public class Manager {
 
     private Integer id;
     private Integer userId;
 
     public Manager(
             Integer id,
-            Integer userId,
-            String email,
-            String password,
-            String firstName,
-            String lastName,
-            String secretWord) {
-        super(userId, email, password, firstName, lastName, secretWord);
+            Integer userId) {
         this.id = id;
         this.userId = userId;
     }
 
     protected Manager(Builder builder) {
-        super(builder);
         id = builder.id;
         userId = builder.userId;
     }
 
-    @Override
     public Integer getId() {
         return id;
     }
 
-    @Override
     public void setId(Integer id) {
         this.id = id;
     }
@@ -44,7 +35,7 @@ public class Manager extends User {
         this.userId = userId;
     }
 
-    public static class Builder extends User.Builder<Builder> {
+    public static class Builder {
 
         private Integer id;
         private Integer userId;
@@ -80,23 +71,13 @@ public class Manager extends User {
         Manager manager = (Manager) o;
 
         if (!Objects.equals(getId(), manager.getId())) return false;
-        if (!Objects.equals(getUserId(), manager.getUserId())) return false;
-        if (!Objects.equals(getEmail(), manager.getEmail())) return false;
-        if (!Objects.equals(getPassword(), manager.getPassword())) return false;
-        if (!Objects.equals(getFirstName(), manager.getFirstName())) return false;
-        if (!Objects.equals(getLastName(), manager.getLastName())) return false;
-        return Objects.equals(getSecretWord(), manager.getSecretWord());
+        return Objects.equals(getUserId(), manager.getUserId());
     }
 
     @Override
     public int hashCode() {
         int result = id != null ? id.hashCode() : 0;
         result = 31 * result + (userId != null ? userId.hashCode() : 0);
-        result = 31 * result + (getEmail() != null ? getEmail().hashCode() : 0);
-        result = 31 * result + (getPassword() != null ? getPassword().hashCode() : 0);
-        result = 31 * result + (getFirstName() != null ? getFirstName().hashCode() : 0);
-        result = 31 * result + (getLastName() != null ? getLastName().hashCode() : 0);
-        result = 31 * result + (getSecretWord() != null ? getSecretWord().hashCode() : 0);
         return result;
     }
 
@@ -105,11 +86,6 @@ public class Manager extends User {
         return "Manager(" +
                 "id=" + id +
                 ", userId=" + '\'' + userId + '\'' +
-                ", email=" + '\'' + getEmail() + '\'' +
-                ", password=" + '\'' + getPassword() + '\'' +
-                ", firstName=" + '\'' + getFirstName() + '\'' +
-                ", lastName=" + '\'' + getLastName() + '\'' +
-                ", secretWord=" + '\'' + getSecretWord() + '\'' +
                 ')';
     }
 }

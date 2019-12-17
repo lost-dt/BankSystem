@@ -24,7 +24,7 @@ public class Transaction {
         this.endTime = endTime;
     }
 
-    protected Transaction(Builder<?> builder) {
+    protected Transaction(Builder builder) {
         id = builder.id;
         cardId = builder.cardId;
         price = builder.price;
@@ -73,7 +73,7 @@ public class Transaction {
         this.endTime = endTime;
     }
 
-    public static class Builder<T extends Builder<T>> {
+    public static class Builder {
 
         private Integer id;
         private Integer cardId;
@@ -85,34 +85,34 @@ public class Transaction {
 
         }
 
-        public T setId(Integer id) {
+        public Builder setId(Integer id) {
             this.id = id;
 
-            return (T) this;
+            return this;
         }
 
-        public T setCardId(Integer cardId) {
+        public Builder setCardId(Integer cardId) {
             this.cardId = cardId;
 
-            return (T) this;
+            return this;
         }
 
-        public T setPrice(Float price) {
+        public Builder setPrice(Float price) {
             this.price = price;
 
-            return (T) this;
+            return this;
         }
 
-        public T setStartTime(Date startTime) {
+        public Builder setStartTime(Date startTime) {
             this.startTime = startTime;
 
-            return (T) this;
+            return this;
         }
 
-        public T setEndTime(Date endTime) {
+        public Builder setEndTime(Date endTime) {
             this.endTime = endTime;
 
-            return (T) this;
+            return this;
         }
 
         public Transaction build() {

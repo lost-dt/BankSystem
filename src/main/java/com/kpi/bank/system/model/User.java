@@ -26,7 +26,7 @@ public class User {
         this.secretWord = secretWord;
     }
 
-    protected User(Builder<?> builder) {
+    protected User(Builder builder) {
         id = builder.id;
         email = builder.email;
         password = builder.password;
@@ -85,7 +85,7 @@ public class User {
     }
 
 
-    public static class Builder<T extends Builder<T>> {
+    public static class Builder {
 
         private Integer id;
         private String email;
@@ -98,40 +98,40 @@ public class User {
 
         }
 
-        public T setId(Integer id) {
+        public Builder setId(Integer id) {
             this.id = id;
 
-            return (T) this;
+            return this;
         }
 
-        public T setEmail(String email) {
+        public Builder setEmail(String email) {
             this.email = email;
 
-            return (T) this;
+            return this;
         }
 
-        public T setPassword(String password) {
+        public Builder setPassword(String password) {
             this.password = password;
 
-            return (T) this;
+            return this;
         }
 
-        public T setFirstName(String firstName) {
+        public Builder setFirstName(String firstName) {
             this.firstName = firstName;
 
-            return (T) this;
+            return this;
         }
 
-        public T setLastName(String lastName) {
+        public Builder setLastName(String lastName) {
             this.lastName = lastName;
 
-            return (T) this;
+            return this;
         }
 
-        public T setSecretWord(String secretWord) {
+        public Builder setSecretWord(String secretWord) {
             this.secretWord = secretWord;
 
-            return (T) this;
+            return this;
         }
 
         public User build() {
